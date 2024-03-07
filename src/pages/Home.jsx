@@ -13,6 +13,7 @@ import {
   ButtonBox,
 } from '../styles/commonStyles';
 import { setCookie } from '../utils/CookieUtil';
+import { jwtDecode } from 'jwt-decode';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -33,7 +34,9 @@ const Home = () => {
     await login(id, password)
       .then((response) => {
         const { token } = response.data;
-        setCookie('accessToken', token);
+        const { exp } = jwtDecode(token);
+        setCookie('accessToken', token, { expires: exp });
+
         navigate('/main');
       })
       .catch((error) => {
