@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import { useForm } from '../hooks/useForm';
 import { login } from '../apis/login';
 import IsEmpty from '../utils/IsEmpty';
@@ -13,6 +12,7 @@ import {
   TitleName,
   ButtonBox,
 } from '../styles/commonStyles';
+import { setCookie } from '../utils/CookieUtil';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Home = () => {
   const [id, handleIdChange] = useForm();
   const [password, handlePasswordChange] = useForm();
 
-  const [cookies, setCookie] = useCookies();
+  // const [cookies, setCookie] = useCookies();
 
   //SECTION - 로그인 api
   const handleLoginclick = async () => {
