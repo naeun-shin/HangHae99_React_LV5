@@ -20,7 +20,7 @@ const Main = () => {
       removeCookie('accessToken');
       navigate('/');
     });
-  }, []);
+  }, [navigate]);
 
   return (
     <>

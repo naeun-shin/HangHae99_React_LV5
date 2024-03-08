@@ -21,8 +21,6 @@ const Home = () => {
   const [id, handleIdChange] = useForm();
   const [password, handlePasswordChange] = useForm();
 
-  // const [cookies, setCookie] = useCookies();
-
   //SECTION - 로그인 api
   const handleLoginclick = async () => {
     if (!IsEmpty({ id, password })) {
@@ -39,7 +37,7 @@ const Home = () => {
 
         navigate('/main');
       })
-      .catch((error) => {
+      .catch(() => {
         return navigate(-1);
       });
   };
