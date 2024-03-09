@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import TodoMain from '../pages/todo/TodoMain';
 import TodoDetail from '../pages/todo/TodoDetail';
+import Header from '../pages/Header';
 
 const Router = () => {
   const [cookies] = useCookies(['accessToken']);
@@ -18,6 +19,7 @@ const Router = () => {
     <CookiesProvider>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
+          <Header />
           <Routes>
             <Route
               path='/'

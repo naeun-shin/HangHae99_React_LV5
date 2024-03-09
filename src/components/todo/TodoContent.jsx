@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import {
-  removeTodo,
-  isDoneTodo,
-  cancelTodo,
+  __isDoneTodo,
+  // removeTodo,
+  // isDoneTodo,
+  // cancelTodo,
+  __removeTodo,
 } from '../../redux/modules/todoSlice';
 import ButtonFunction from '../button/ButtonFunction';
 
@@ -14,21 +16,22 @@ import {
 } from '../../styles/componentStyles';
 
 const TodoContent = ({ todo }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
   // 삭제
   const handleListRemoveClick = (id) => {
-    // dispatch(removeTodo(id));
+    dispatch(__removeTodo(id));
   };
 
   // 완료 이동
   const handleListMoveDoneClick = (id) => {
-    // dispatch(isDoneTodo({ id, isDone: true }));
+    dispatch(__isDoneTodo({ id, isDone: true }));
   };
 
   // 취소
   const handleDoneListCancelClick = (id) => {
-    // dispatch(cancelTodo({ id, isDone: false }));
+    dispatch(__isDoneTodo({ id, isDone: false }));
   };
 
   return (

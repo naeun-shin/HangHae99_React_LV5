@@ -22,7 +22,6 @@ const TodoAdd = () => {
         isDone: false,
       };
       dispatch(__addTodoList(newTodo));
-      // navigate('/TodoMain');
     } else {
       alert('제목,내용 및 이름을 입력해주세요!');
     }

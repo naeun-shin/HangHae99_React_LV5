@@ -138,9 +138,12 @@ const DetailTitle = styled.div`
   font-size: 30px;
 `;
 const DetailContent = styled.div`
+  border: 1px solid black;
+  width: 450px;
+  height: 150px;
   font-weight: bold;
-  padding: 0px 10px;
-  margin: 10px;
+  text-align: left;
+  padding: 10px;
 `;
 
 const DetailToListButton = styled.button`
@@ -149,6 +152,22 @@ const DetailToListButton = styled.button`
   font-weight: bold;
   width: 120px;
   border-radius: 5px;
+`;
+const DetailContentSection = styled.div`
+  display: flex;
+  /* align-items: center; */
+  flex-direction: column;
+  position: relative;
+  margin: 10px;
+`;
+
+const ContentTextarea = styled.textarea`
+  border: 1px solid black;
+  width: 450px;
+  height: 150px;
+  resize: none;
+  font-weight: bold;
+  padding: 10px;
 `;
 
 export {
@@ -166,5 +185,7 @@ export {
   DetailHeader,
   DetailTitle,
   DetailContent,
+  DetailContentSection,
   DetailToListButton,
+  ContentTextarea,
 };
