@@ -1,11 +1,19 @@
 //NOTE - false 인 경우엔 working 로딩 / true인 경우엔 done으로 로딩
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import TodoContent from './TodoContent';
 import { WorkingStyle, WorkingListStyle } from '../../styles/componentStyles';
+import { __getTodoList } from '../../redux/modules/todoSlice';
 
 const TodoListSection = ({ isDone }) => {
-  const todo = useSelector((state) => state.todo);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(__getTodoList());
+  }, [dispatch]);
+
+  const todo = useSelector((state) => state.todos.todos);
+
   const title = !isDone ? 'Working' : 'Done';
   return (
     <>

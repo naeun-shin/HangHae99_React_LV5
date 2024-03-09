@@ -14,21 +14,21 @@ import {
 } from '../../styles/componentStyles';
 
 const TodoContent = ({ todo }) => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // 삭제
   const handleListRemoveClick = (id) => {
-    dispatch(removeTodo(id));
+    // dispatch(removeTodo(id));
   };
 
   // 완료 이동
   const handleListMoveDoneClick = (id) => {
-    dispatch(isDoneTodo({ id, isDone: true }));
+    // dispatch(isDoneTodo({ id, isDone: true }));
   };
 
   // 취소
   const handleDoneListCancelClick = (id) => {
-    dispatch(cancelTodo({ id, isDone: false }));
+    // dispatch(cancelTodo({ id, isDone: false }));
   };
 
   return (

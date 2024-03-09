@@ -1,49 +1,67 @@
-import { createSlice, isAllOf } from '@reduxjs/toolkit';
-import { v4 as uuidv4 } from 'uuid';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+// import todoInstance from '../../apis/todoApi';
+import axios from 'axios';
 
-const initialState = [
-  {
-    id: uuidv4(),
-    title: '리액트 배우기',
-    content: '리액트 배우기',
-    isDone: false,
-  },
-  {
-    id: uuidv4(),
-    title: 'Next.js 배우기',
-    content: 'Next.js 배우기',
-    isDone: true,
-  },
-];
+export const __getTodoList = createAsyncThunk(
+  // 1. actionValue
+  'todos/getTodo',
+  // 2. callback function
+  async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/todo');
+      return response.data;
+    } catch (error) {
+      throw Error('Failed to fetch data from the server.');
+    }
+  }
+);
+
+export const __addTodoList = createAsyncThunk(
+  'todos/addTodo',
+  async (todos) => {
+    console.log(todos);
+    try {
+      const response = await axios.post('http://localhost:3001/todo', todos);
+      return response.data;
+    } catch (error) {
+      throw Error('Failed to fetch data from the server.');
+    }
+  }
+);
 
 const todoSlice = createSlice({
-  name: 'todo',
-  initialState: initialState,
-  reducers: {
-    addTodo: (state, action) => {
-      return [...state, action.payload];
-    },
-    isDoneTodo: (state, action) => {
-      const { id, isDone } = action.payload;
-      const todo = state.find((todo) => todo.id === id);
-      if (todo) {
-        todo.isDone = isDone;
-      }
-    },
-    cancelTodo: (state, action) => {
-      const { id, isDone } = action.payload;
-      const todo = state.find((todo) => todo.id === id);
-      if (todo) {
-        todo.isDone = isDone;
-      }
-    },
-    removeTodo: (state, action) => {
-      console.log(action);
-      return state.filter((todo) => todo.id !== action.payload);
-    },
+  name: 'todos',
+  initialState: {
+    todos: [],
+    status: 'idle',
+    error: null,
+  },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(__getTodoList.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(__getTodoList.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.todos = action.payload;
+      })
+      .addCase(__getTodoList.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      })
+      .addCase(__addTodoList.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(__addTodoList.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.todos = [...state.todos, action.payload];
+      })
+      .addCase(__addTodoList.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
   },
 });
 
-export const { addTodo, isDoneTodo, cancelTodo, removeTodo } =
-  todoSlice.actions;
-export default todoSlice.reducer;
+export default todoSlice;

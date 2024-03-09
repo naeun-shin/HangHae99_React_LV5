@@ -31,7 +31,7 @@ const Router = () => {
               path='/main'
               element={isLogedIn ? <Main /> : <Navigate to='/' />}
             />
-            <Route path='/todo' element={<TodoMain />} />
+            <Route path='/todoMain' element={<TodoMain />} />
             <Route path='todoDetail/:id' element={<TodoDetail />} />
           </Routes>
         </BrowserRouter>
