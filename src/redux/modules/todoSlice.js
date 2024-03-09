@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import todoInstance from '../../apis/todoApi';
+import todoInstance from '../../apis/todoApi';
 import axios from 'axios';
 
 export const __getTodoList = createAsyncThunk(
@@ -8,7 +8,7 @@ export const __getTodoList = createAsyncThunk(
   // 2. callback function
   async () => {
     try {
-      const response = await axios.get('http://localhost:3001/todo');
+      const response = await todoInstance.get('/todo');
       return response.data;
     } catch (error) {
       throw Error('Failed to fetch data from the server.');
@@ -20,7 +20,7 @@ export const __addTodoList = createAsyncThunk(
   'todos/addTodo',
   async (todos) => {
     try {
-      const response = await axios.post('http://localhost:3001/todo', todos);
+      const response = await todoInstance.post('/todo', todos);
       return response.data;
     } catch (error) {
       throw Error('Failed to fetch data from the server.');
@@ -30,7 +30,7 @@ export const __addTodoList = createAsyncThunk(
 
 export const __removeTodo = createAsyncThunk('todos/removeTodo', async (id) => {
   try {
-    const response = await axios.delete(`http://localhost:3001/todo/${id}`);
+    const response = await todoInstance.delete(`/todo/${id}`);
     return response.data;
   } catch (error) {
     throw Error('Failed to fetch data from the server.');
@@ -41,7 +41,7 @@ export const __isDoneTodo = createAsyncThunk(
   'todos/isDoneTodo',
   async ({ id, isDone }) => {
     try {
-      const response = await axios.patch(`http://localhost:3001/todo/${id}`, {
+      const response = await todoInstance.patch(`/todo/${id}`, {
         isDone,
       });
       return response.data;
@@ -55,12 +55,9 @@ export const __updateTodoContent = createAsyncThunk(
   'todo/updateTodoContent',
   async ({ todoId, content }) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:3001/todo/${todoId}`,
-        {
-          content,
-        }
-      );
+      const response = await todoInstance.patch(`/todo/${todoId}`, {
+        content,
+      });
       console.log(response.data);
       return response.data;
     } catch (error) {

@@ -1,13 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {
-  __isDoneTodo,
-  // removeTodo,
-  // isDoneTodo,
-  // cancelTodo,
-  __removeTodo,
-} from '../../redux/modules/todoSlice';
+import { __isDoneTodo, __removeTodo } from '../../redux/modules/todoSlice';
 import ButtonFunction from '../button/ButtonFunction';
 
 import {
@@ -17,7 +11,6 @@ import {
 
 const TodoContent = ({ todo }) => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   // 삭제
   const handleListRemoveClick = (id) => {
