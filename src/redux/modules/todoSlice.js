@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import todoInstance from '../../apis/todoApi';
-import axios from 'axios';
 
 export const __getTodoList = createAsyncThunk(
   // 1. actionValue

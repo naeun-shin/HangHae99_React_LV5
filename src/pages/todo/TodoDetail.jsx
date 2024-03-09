@@ -42,7 +42,8 @@ const TodoDetail = () => {
 
   // 내용 수정 세팅
   const handleContentChange = (e) => {
-    setContent(e.target.value);
+    const content = e.target.value;
+    setContent(content);
   };
 
   const handleTodoUpdate = () => {
