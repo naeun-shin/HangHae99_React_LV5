@@ -1,7 +1,7 @@
-import axios from 'axios';
+// import axios from 'axios';
 
-const todoInstance = axios.create({
-  baseURL: process.env.REACT_APP_TODO_LIST_URL,
-});
+// const todoInstance = axios.create({
+//   baseURL: process.env.REACT_APP_TODO_LIST_URL,
+// });
 
-export default todoInstance;
+// export default todoInstance;

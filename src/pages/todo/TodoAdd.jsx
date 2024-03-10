@@ -3,16 +3,14 @@ import { useDispatch } from 'react-redux';
 import { __addTodoList } from '../../redux/modules/todoSlice';
 import { AddListStyle } from '../../styles/componentStyles';
 import Button from '../../components/button/Button';
-import { useForm } from '../../hooks/useForm';
-import IsEmpty from '../../utils/IsEmpty';
 // import { useNavigate } from 'react-router-dom';
 
 const TodoAdd = () => {
+  const dispatch = useDispatch();
+
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
-  const dispatch = useDispatch();
-
   const [disabled, setDisabled] = useState(false);
 
   const handleTodoListAdd = () => {
@@ -27,6 +25,12 @@ const TodoAdd = () => {
         isDone: false,
       };
       dispatch(__addTodoList(newTodo));
+
+      alert('Todo 리스트가 추가되었습니다!');
+
+      setContent('');
+      setTitle('');
+      setName('');
     } else {
       setDisabled(true);
       alert('제목,내용 및 이름을 입력해주세요!');

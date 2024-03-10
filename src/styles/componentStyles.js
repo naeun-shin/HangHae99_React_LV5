@@ -17,6 +17,12 @@ const Main = styled.div`
   height: 100vh;
 `;
 
+const Nav = styled.div`
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0; */
+`;
 // NavBar
 const NavBar = styled.div`
   border: 1px solid ${(props) => props.theme.color.ligtGrey};
@@ -173,6 +179,7 @@ const ContentTextarea = styled.textarea`
 export {
   Container,
   Main,
+  Nav,
   NavBar,
   AddListStyle,
   StyledButton,

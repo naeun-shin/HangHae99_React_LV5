@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import todoInstance from '../../apis/todoApi';
+import { todoInstance } from '../../apis/axios';
 
 export const __getTodoList = createAsyncThunk(
   // 1. actionValue
@@ -38,6 +38,7 @@ export const __removeTodo = createAsyncThunk('todos/removeTodo', async (id) => {
 
 export const __isDoneTodo = createAsyncThunk(
   'todos/isDoneTodo',
+  //  item을 가져와서 {...item, isDoen : !isDone}
   async ({ id, isDone }) => {
     try {
       const response = await todoInstance.patch(`/todo/${id}`, {
@@ -50,9 +51,22 @@ export const __isDoneTodo = createAsyncThunk(
   }
 );
 
+// export const __getDetailTodo = createAsyncThunk(
+//   'todo/getDetailTdo',
+//   async (id) => {
+//     try {
+//       const response = await todoInstance.get(`/todo/${id}`);
+//       return response.data;
+//     } catch (error) {
+//       throw Error('Failed to fetch data from the server.');
+//     }
+//   }
+// );
+
 export const __updateTodoContent = createAsyncThunk(
   'todo/updateTodoContent',
   async ({ todoId, content }) => {
+    // console.log({ todoId, content });
     try {
       const response = await todoInstance.patch(`/todo/${todoId}`, {
         content,
@@ -131,22 +145,15 @@ export const todoSlice = createSlice({
       })
       // __updateTodoContent
       .addCase(__updateTodoContent.pending, (state) => {
+        console.log('load state', state);
         state.status = 'loading';
       })
       .addCase(__updateTodoContent.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        const updatedTodo = action.payload; // 변경된 todo 항목
-        const existingTodoIndex = state.todos.findIndex(
-          (todo) => todo.id === updatedTodo.id
+        state.todos = state.todos.map((todo) =>
+          todo.id === action.payload.id ? action.payload : todo
         );
-
-        if (existingTodoIndex !== -1) {
-          // 기존의 todo 항목을 찾았을 경우, 해당 항목을 업데이트
-          state.todos[existingTodoIndex] = updatedTodo;
-        } else {
-          // 기존의 todo 항목이 없는 경우, 새로 추가
-          state.todos.push(updatedTodo);
-        }
+        console.log(state.todos);
       })
       .addCase(__updateTodoContent.rejected, (state, action) => {
         state.status = 'failed';

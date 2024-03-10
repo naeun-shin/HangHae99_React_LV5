@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from '../hooks/useForm';
-import { login } from '../apis/login';
+import { login } from '../apis/authApi';
 import IsEmpty from '../utils/IsEmpty';
 import Button from '../components/buttons/Button';
 import Input from '../components/inputs/Input';
@@ -12,11 +12,12 @@ import {
   TitleName,
   ButtonBox,
 } from '../styles/commonStyles';
-import { setCookie } from '../utils/CookieUtil';
-import { jwtDecode } from 'jwt-decode';
+import { useDispatch } from 'react-redux';
+import { __login } from '../redux/modules/authSlice';
 
 const Home = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [id, handleIdChange] = useForm();
   const [password, handlePasswordChange] = useForm();
@@ -28,18 +29,12 @@ const Home = () => {
       alert('아이디와 비밀번호를 입력해주세요.');
       return;
     }
+    const userInfo = {
+      id,
+      password,
+    };
     //SECTION - 로그인 통신
-    await login(id, password)
-      .then((response) => {
-        const { token } = response.data;
-        const { exp } = jwtDecode(token);
-        setCookie('accessToken', token, { expires: exp });
-
-        navigate('/main');
-      })
-      .catch(() => {
-        return navigate(-1);
-      });
+    dispatch(__login(userInfo));
   };
   //SECTION - 회원가입 버튼 핸들러
   const handleSignUpLinkTo = () => {
