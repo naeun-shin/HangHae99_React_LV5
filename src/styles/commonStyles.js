@@ -1,31 +1,52 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* 페이지의 전체 높이를 차지하도록 설정 */
+  display: block;
 `;
 
-const FormSection = styled.form`
-  width: 1000px;
+// NavBar
+const NavBar = styled.div`
+  /* background-color: ${(props) => props.theme.color.darkBlue}; */
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Wrapper = styled.div`
+  display: grid;
+  justify-content: center;
+`;
+const MainSection = styled.div`
+  width: 400px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-
-  border: 2px solid rgb(254, 83, 31);
+  /* background-color: ${(props) => props.theme.color.lightBlue}; */
   border-radius: 5px;
-  gap: 50px;
-  padding: 12px;
-  margin: 15px;
+  gap: 25px;
+  padding: 20px;
+  margin-top: 100px;
+`;
+const FormSection = styled.form`
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: ${(props) => props.theme.color.lightBlue}; */
+  border-radius: 5px;
+  gap: 25px;
+  padding: 20px;
+  margin-top: 100px;
 `;
 
-const Title = styled.div`
+const FormTag = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
 
-const TitleName = styled(Title)`
+const FormTitle = styled(FormTag)`
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,11 +54,12 @@ const TitleName = styled(Title)`
   font-size: 30px;
 `;
 
-const ButtonBox = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-`;
-
-export { Container, FormSection, Title, TitleName, ButtonBox };
+export {
+  Container,
+  Wrapper,
+  NavBar,
+  MainSection,
+  FormSection,
+  FormTitle,
+  FormTag,
+};

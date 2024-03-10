@@ -3,7 +3,13 @@ const color = {
   red: 'red',
   white: 'white',
   black: 'black',
-  ligtGrey: '#ebebeb',
+  lightPink: '#FEF1E6',
+  ligtGrey: '#E5E1DA',
+  lightBeige: '#FBF9F1',
+  lightOrange: '#FFB085',
+  lightBlue: '#E3F4F4',
+  darkBlue: '#93BFCF',
+  blue: '#92C7CF',
 };
 
 const theme = {

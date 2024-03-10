@@ -1,8 +1,8 @@
 //NOTE - false 인 경우엔 working 로딩 / true인 경우엔 done으로 로딩
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TodoContent from './TodoContent';
-import { WorkingStyle, WorkingListStyle } from '../../styles/componentStyles';
+import { WorkingStyle, WorkingListStyle } from '../../styles/todoStyles';
 import { __getTodoList } from '../../redux/modules/todoSlice';
 
 const TodoListSection = ({ isDone }) => {

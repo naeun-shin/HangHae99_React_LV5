@@ -1,12 +1,16 @@
 import React from 'react';
 import TodoListSection from '../../components/todo/TodoListSection';
-import TodoAdd from '../todo/TodoAdd';
+import Button from '../../components/button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const TodoMain = () => {
+  const naviagte = useNavigate();
+  const handleTodolistAddClick = () => {
+    naviagte('/todoAdd');
+  };
   return (
     <>
-      <TodoAdd />
-      <br />
+      <Button onClick={handleTodolistAddClick} text={'TodoList 추가하기'} />
       <TodoListSection isDone={false} />
       <TodoListSection isDone={true} />
     </>

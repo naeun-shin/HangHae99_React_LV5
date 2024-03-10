@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
-const globalStyles = createGlobalStyle`
+const GlobalStyles = createGlobalStyle`
 body {
+  background-color: #6096B4;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -18,4 +19,4 @@ body {
 
 `;
 
-export default globalStyles;
+export default GlobalStyles;

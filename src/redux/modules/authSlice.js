@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import authInstance from './api';
 import { authInstance } from '../../apis/axios';
 import { jwtDecode } from 'jwt-decode';
 import { getCookie, setCookie } from '../../utils/CookieUtil';

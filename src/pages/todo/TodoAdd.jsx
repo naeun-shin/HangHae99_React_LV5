@@ -1,12 +1,20 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { __addTodoList } from '../../redux/modules/todoSlice';
-import { AddListStyle } from '../../styles/componentStyles';
+import {
+  AddListBox,
+  AddListTitle,
+  AddListWriter,
+  ContentTextarea,
+} from '../../styles/todoStyles';
+import { Wrapper } from '../../styles/commonStyles';
 import Button from '../../components/button/Button';
-// import { useNavigate } from 'react-router-dom';
+import StyledInput from '../../components/inputs/Input.module';
+import { useNavigate } from 'react-router-dom';
 
 const TodoAdd = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -31,6 +39,8 @@ const TodoAdd = () => {
       setContent('');
       setTitle('');
       setName('');
+
+      navigate('/todoMain');
     } else {
       setDisabled(true);
       alert('제목,내용 및 이름을 입력해주세요!');
@@ -38,20 +48,37 @@ const TodoAdd = () => {
   };
 
   return (
-    <AddListStyle>
-      <p>제목 </p>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
-      <p>내용</p>
-      <input value={content} onChange={(e) => setContent(e.target.value)} />
-      <p>작성자</p>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
-      <Button
-        onClick={handleTodoListAdd}
-        text='추가하기'
-        buttontype='add'
-        disabled
-      />
-    </AddListStyle>
+    <>
+      <Wrapper>
+        <AddListBox>
+          <AddListWriter>
+            <p>작성자</p>
+            <StyledInput
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </AddListWriter>
+          <AddListTitle>
+            <p>제목 </p>
+            <StyledInput
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </AddListTitle>
+          <p>내용</p>
+          <ContentTextarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <Button
+            onClick={handleTodoListAdd}
+            text='추가하기'
+            buttontype='add'
+            disabled
+          />
+        </AddListBox>
+      </Wrapper>
+    </>
   );
 };
 

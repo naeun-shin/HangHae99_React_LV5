@@ -11,7 +11,7 @@ import {
   DetailContent,
   ContentTextarea,
   DetailContentSection,
-} from '../../styles/componentStyles';
+} from '../../styles/todoStyles';
 
 const TodoDetail = () => {
   const params = useParams();

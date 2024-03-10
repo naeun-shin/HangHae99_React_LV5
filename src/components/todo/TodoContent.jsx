@@ -4,10 +4,7 @@ import { useDispatch } from 'react-redux';
 import { __isDoneTodo, __removeTodo } from '../../redux/modules/todoSlice';
 import ButtonFunction from '../button/ButtonFunction';
 
-import {
-  WorkingComponentSytle,
-  StyledLink,
-} from '../../styles/componentStyles';
+import { WorkingComponentSytle, StyledLink } from '../../styles/todoStyles';
 
 const TodoContent = ({ todo }) => {
   const dispatch = useDispatch();
