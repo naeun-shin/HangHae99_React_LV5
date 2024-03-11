@@ -1,0 +1,18 @@
+{
+  "todos": [
+    {
+      "id": "2",
+      "name": "둘리",
+      "title": "리덕스 툴킷!",
+      "content": "툴킷!!!asgsdgsgsdgsfjglsghls",
+      "isDone": true
+    },
+    {
+      "id": "855d",
+      "name": "b@b.com",
+      "title": "ㄴㅇㄴㅇㅎㄴㅇㅎㄴㅇㅎㄴㅁㅇㅎ",
+      "content": "ㄴㅎㄴㅇ햦벽더ㅣ",
+      "isDone": false
+    }
+  ]
+}

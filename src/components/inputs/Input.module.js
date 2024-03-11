@@ -8,7 +8,7 @@ const StyledInput = styled.input`
   border-radius: 8px;
   padding: 0px 12px;
   font-size: 14px;
-  border: 1px solid rgb(238, 238, 238);
+  border: 1px solid ${(props) => props.theme.color.blue};
 `;
 
 export default StyledInput;

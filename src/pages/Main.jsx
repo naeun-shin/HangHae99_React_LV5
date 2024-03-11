@@ -1,39 +1,46 @@
 import React, { useEffect } from 'react';
-import { getAuthAxios } from '../apis/authtokenApi';
 import { useNavigate } from 'react-router-dom';
-// import { Cookies } from 'react-cookie';
-import Button from '../components/buttons/Button';
-import { ButtonBox, Container, FormSection } from '../styles/commonStyles';
-import { removeCookie } from '../utils/CookieUtil';
+import Button from '../components/button/Button';
+import { MainSection, Wrapper } from '../styles/commonStyles';
+import { useDispatch } from 'react-redux';
+import { __getAuthToken } from '../redux/modules/authSlice';
+import withAuth from '../hoc/withAuth';
 
 const Main = () => {
   const navigate = useNavigate();
-
-  const handleLogoutClick = () => {
-    removeCookie('accessToken');
-    navigate('/');
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // 메인 페이지 정보를 불러오기
-    getAuthAxios().catch(() => {
-      removeCookie('accessToken');
-      navigate('/');
-    });
-  }, []);
+    dispatch(__getAuthToken);
+  }, [navigate]);
 
+  const handleTodolistAddClick = () => {
+    navigate('/todoAdd');
+  };
+  const handleTodolistReadClick = () => {
+    navigate('/todoMain');
+  };
   return (
     <>
-      <Container>
-        <FormSection>
-          <div>TODOLIST!!!!!!!!!</div>
-          <ButtonBox>
-            <Button onClick={handleLogoutClick} text={'로그아웃'}></Button>
-          </ButtonBox>
-        </FormSection>
-      </Container>
+      <Wrapper>
+        <MainSection>
+          <Button
+            onClick={handleTodolistAddClick}
+            text={'TodoList 추가하기'}
+            bgColor='lightYellow'
+            borderColor='darkYellow'
+          />
+          <Button
+            onClick={handleTodolistReadClick}
+            text={'TodoList 목록보기'}
+            bgColor='lightYellow'
+            borderColor='darkYellow'
+          />
+        </MainSection>
+      </Wrapper>
     </>
   );
 };
 
-export default Main;
+export default withAuth(Main, true);
