@@ -7,6 +7,7 @@ const store = configureStore({
     todos: todoSlice.reducer,
     auth: authSlice.reducer,
   },
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default store;

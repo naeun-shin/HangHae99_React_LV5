@@ -1,8 +1,9 @@
 import React from 'react';
 import SignInUpForm from '../components/signInUp/SignInUpForm';
+import withAuth from '../hoc/withAuth';
 
 const Home = () => {
-  return <SignInUpForm isSignedIn={true} />;
+  return <SignInUpForm isLogedIn />;
 };
 
-export default Home;
+export default withAuth(Home, false);

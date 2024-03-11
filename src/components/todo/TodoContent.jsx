@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import { __isDoneTodo, __removeTodo } from '../../redux/modules/todoSlice';
 import ButtonFunction from '../button/ButtonFunction';
 
 import { WorkingComponentSytle, StyledLink } from '../../styles/todoStyles';
+import withAuth from '../../hoc/withAuth';
 
 const TodoContent = ({ todo }) => {
   const dispatch = useDispatch();

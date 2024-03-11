@@ -5,11 +5,14 @@ const color = {
   black: 'black',
   lightPink: '#FEF1E6',
   ligtGrey: '#E5E1DA',
-  lightBeige: '#FBF9F1',
+  lightBeige: '#EEE9DA',
   lightOrange: '#FFB085',
   lightBlue: '#E3F4F4',
   darkBlue: '#93BFCF',
   blue: '#92C7CF',
+  brown: '#AD8B73',
+  lightBrwon: '#CEAB93',
+  beige: '#E3CAA5',
 };
 
 const theme = {

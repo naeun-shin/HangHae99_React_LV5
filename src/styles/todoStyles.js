@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const AddListBox = styled.div`
-  padding: 20px 20px;
+  margin: 5%;
+  padding: 5%;
   height: auto;
-  background-color: #ebebeb;
+  background-color: ${(props) => props.theme.color.lightBlue};
   border-radius: 10px;
   font-weight: bold;
   width: 500px;
@@ -32,17 +33,21 @@ const WorkingListStyle = styled.div`
 const WorkingComponentSytle = styled.div`
   margin: 5px 0px;
   padding: 10px;
-  border: 4px solid #017574;
+  border: 4px solid #bbe2ec;
   border-radius: 5px;
   flex-grow: 0;
+  background-color: ${(props) => props.theme.color.lightBlue};
 `;
 
 const StyledLink = styled(Link)`
+  display: grid;
   color: black;
   text-decoration-line: none;
+  justify-items: end;
 `;
 
 const DetailBox = styled.div`
+  /* border: 2px solid ${(props) => props.theme.color.ligtOrange}; */
   display: flex;
   flex-direction: column;
   position: relative;
@@ -51,7 +56,8 @@ const DetailBox = styled.div`
   height: 100vh;
 `;
 const Detail = styled.div`
-  border: 2px solid ${(props) => props.theme.color.ligtOrange};
+  /* border: 2px solid ${(props) => props.theme.color.ligtOrange}; */
+  background-color: ${(props) => props.theme.color.lightBlue};
   width: 500px;
   height: 400px;
   border-radius: 5px;
@@ -62,6 +68,7 @@ const DetailHeader = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
+
 const DetailTitle = styled.div`
   font-weight: bold;
   padding: 0px 10px;
@@ -69,12 +76,13 @@ const DetailTitle = styled.div`
   font-size: 30px;
 `;
 const DetailContent = styled.div`
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.theme.color.blue};
   width: 450px;
   height: 150px;
   font-weight: bold;
   text-align: left;
   padding: 10px;
+  border-radius: 5px;
 `;
 
 const DetailToListButton = styled.button`

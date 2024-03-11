@@ -1,25 +1,17 @@
 {
-  "todo": [
-    {
-      "isDone": true,
-      "name": "홍길동",
-      "title": "과제를 제출하자!",
-      "content": "ㄴㅇㅎㅇㄴㅁㅎㅇㄴㅎdsgsdg",
-      "details": false,
-      "id": "1"
-    },
+  "todos": [
     {
       "id": "2",
       "name": "둘리",
       "title": "리덕스 툴킷!",
-      "content": "툴킷!!!asgsdg",
-      "isDone": false
+      "content": "툴킷!!!asgsdgsgsdgsfjglsghls",
+      "isDone": true
     },
     {
-      "id": "d6f3",
-      "name": "tst",
-      "title": "setseasgsdgsgadg",
-      "content": "asetsafa",
+      "id": "855d",
+      "name": "b@b.com",
+      "title": "ㄴㅇㄴㅇㅎㄴㅇㅎㄴㅇㅎㄴㅁㅇㅎ",
+      "content": "ㄴㅎㄴㅇ햦벽더ㅣ",
       "isDone": false
     }
   ]

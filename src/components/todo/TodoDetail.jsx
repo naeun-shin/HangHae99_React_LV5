@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../../components/button/Button';
+import Button from '../button/Button';
 import { __updateTodoContent } from '../../redux/modules/todoSlice';
 import {
   DetailBox,
@@ -12,6 +12,7 @@ import {
   ContentTextarea,
   DetailContentSection,
 } from '../../styles/todoStyles';
+import withAuth from '../../hoc/withAuth';
 
 const TodoDetail = () => {
   const params = useParams();
@@ -19,8 +20,9 @@ const TodoDetail = () => {
   const dispatch = useDispatch();
 
   const todoList = useSelector((state) => state.todos.todos);
+
   const todoId = params.id;
-  const details = todoList.find((item) => item.id === todoId);
+  const details = todoList.find((item) => item.id === +todoId);
 
   // centent변경 내용 저장을 위한 useState => 초기값 : 들고온 정보
   const [content, setContent] = useState(details.content);
@@ -51,55 +53,52 @@ const TodoDetail = () => {
     setIsEditMode(false);
   };
 
-  if (!details) {
-    return <div>Todo가 없습니다!</div>;
-  }
   return (
-    <>
-      <DetailBox>
-        <Detail>
-          <DetailHeader>
-            <p>ID : {todoId}</p>
-            <Button
-              onClick={handleGoBackclick}
-              text='이전으로'
-              buttontype='goBack'
-            />
-          </DetailHeader>
-          <DetailTitle>{details.title}</DetailTitle>
-          <DetailContentSection>
-            {isEditMode ? (
-              <ContentTextarea value={content} onChange={handleContentChange} />
-            ) : (
-              <DetailContent>{details.content}</DetailContent>
-            )}
-          </DetailContentSection>
+    <DetailBox>
+      <Detail>
+        <DetailHeader>
+          <p> 작성자 : {details.name}</p>
+          <Button
+            onClick={handleGoBackclick}
+            text='이전으로'
+            buttontype='goBack'
+          />
+        </DetailHeader>
+        <DetailTitle>{details.title}</DetailTitle>
+        <DetailContentSection>
           {isEditMode ? (
-            <>
-              <Button
-                onClick={handleTodoUpdate}
-                text='저장하기'
-                buttontype='remove'
-              />
-              <Button
-                onClick={handleUpdateCancelClick}
-                text='취소하기'
-                buttontype='cancel'
-              />
-            </>
+            <ContentTextarea value={content} onChange={handleContentChange} />
           ) : (
             <>
-              <Button
-                onClick={handleUpdateModeClick}
-                text='수정하기'
-                buttontype='update'
-              />
+              <DetailContent>{details.content}</DetailContent>
             </>
           )}
-        </Detail>
-      </DetailBox>
-    </>
+        </DetailContentSection>
+        {isEditMode ? (
+          <>
+            <Button
+              onClick={handleTodoUpdate}
+              text='저장하기'
+              buttontype='remove'
+            />
+            <Button
+              onClick={handleUpdateCancelClick}
+              text='취소하기'
+              buttontype='cancel'
+            />
+          </>
+        ) : (
+          <>
+            <Button
+              onClick={handleUpdateModeClick}
+              text='수정하기'
+              buttontype='update'
+            />
+          </>
+        )}
+      </Detail>
+    </DetailBox>
   );
 };
 
-export default TodoDetail;
+export default withAuth(TodoDetail, true);

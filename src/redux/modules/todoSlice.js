@@ -7,7 +7,7 @@ export const __getTodoList = createAsyncThunk(
   // 2. callback function
   async () => {
     try {
-      const response = await todoInstance.get('/todo');
+      const response = await todoInstance.get('/todos');
       return response.data;
     } catch (error) {
       throw Error('Failed to fetch data from the server.');
@@ -19,7 +19,7 @@ export const __addTodoList = createAsyncThunk(
   'todos/addTodo',
   async (todos) => {
     try {
-      const response = await todoInstance.post('/todo', todos);
+      const response = await todoInstance.post('/todos', todos);
       return response.data;
     } catch (error) {
       throw Error('Failed to fetch data from the server.');
@@ -29,7 +29,7 @@ export const __addTodoList = createAsyncThunk(
 
 export const __removeTodo = createAsyncThunk('todos/removeTodo', async (id) => {
   try {
-    const response = await todoInstance.delete(`/todo/${id}`);
+    const response = await todoInstance.delete(`/todos/${id}`);
     return response.data;
   } catch (error) {
     throw Error('Failed to fetch data from the server.');
@@ -38,10 +38,9 @@ export const __removeTodo = createAsyncThunk('todos/removeTodo', async (id) => {
 
 export const __isDoneTodo = createAsyncThunk(
   'todos/isDoneTodo',
-  //  item을 가져와서 {...item, isDoen : !isDone}
   async ({ id, isDone }) => {
     try {
-      const response = await todoInstance.patch(`/todo/${id}`, {
+      const response = await todoInstance.patch(`/todos/${id}`, {
         isDone,
       });
       return response.data;
@@ -51,27 +50,13 @@ export const __isDoneTodo = createAsyncThunk(
   }
 );
 
-// export const __getDetailTodo = createAsyncThunk(
-//   'todo/getDetailTdo',
-//   async (id) => {
-//     try {
-//       const response = await todoInstance.get(`/todo/${id}`);
-//       return response.data;
-//     } catch (error) {
-//       throw Error('Failed to fetch data from the server.');
-//     }
-//   }
-// );
-
 export const __updateTodoContent = createAsyncThunk(
   'todo/updateTodoContent',
   async ({ todoId, content }) => {
-    // console.log({ todoId, content });
     try {
-      const response = await todoInstance.patch(`/todo/${todoId}`, {
+      const response = await todoInstance.patch(`/todos/${todoId}`, {
         content,
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       throw Error('Failed to fetch data from the server.');
@@ -145,7 +130,6 @@ export const todoSlice = createSlice({
       })
       // __updateTodoContent
       .addCase(__updateTodoContent.pending, (state) => {
-        console.log('load state', state);
         state.status = 'loading';
       })
       .addCase(__updateTodoContent.fulfilled, (state, action) => {
@@ -153,7 +137,6 @@ export const todoSlice = createSlice({
         state.todos = state.todos.map((todo) =>
           todo.id === action.payload.id ? action.payload : todo
         );
-        console.log(state.todos);
       })
       .addCase(__updateTodoContent.rejected, (state, action) => {
         state.status = 'failed';

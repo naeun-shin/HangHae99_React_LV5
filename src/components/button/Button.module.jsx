@@ -4,36 +4,17 @@ import styled from 'styled-components';
 const StyledButton = styled.button`
   cursor: pointer;
   width: 150px;
-
-  padding: 15px;
-  margin: 10px;
-  margin-left: auto;
+  padding: 15px 10px;
+  margin: 5px;
 
   font-size: 14px;
   font-weight: bold;
 
-  background-color: ${(props) => {
-    return props.buttontype === 'add'
-      ? props.theme.color.darkGreen
-      : 'transparent';
-  }};
-  color: ${(props) => {
-    return props.buttontype === 'add'
-      ? props.theme.color.white
-      : props.theme.color.black;
-  }};
-
-  border-width: 2px;
-  border-style: solid;
+  background-color: ${(props) => props.theme.color.lightBlue};
   border-radius: 5px;
-  border-color: ${(props) => {
-    if (props.buttontype === 'cancel' || props.buttontype === 'complete')
-      return props.theme.color.darkGreen;
-    else if (props.buttontype === 'remove') return props.theme.color.red;
-    else if (props.buttontype === 'goBack') return props.theme.color.ligtGrey;
-    else return 'transparent';
-  }};
+  border: 2px solid ${(props) => props.theme.color.blue};
 `;
+
 const ButtonBox = styled.div`
   display: flex;
   align-items: center;

@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { __login, __registerUser } from '../../redux/modules/authSlice';
 import Button from '../../components/button/Button';
 import StyledInput from '../../components/inputs/Input.module';
+import withAuth from '../../pages/TodoMain';
 
 const SignInUpForm = () => {
   const navigate = useNavigate();
@@ -36,7 +37,7 @@ const SignInUpForm = () => {
     if (isLogedIn) {
       //SECTION - 로그인
       dispatch(__login(userInfo));
-      navigate('/main');
+      // navigate('/main');
     } else {
       //SECTION - 회원가입
       dispatch(__registerUser(userInfo));
@@ -67,7 +68,6 @@ const SignInUpForm = () => {
             type='text'
             value={id}
             onChange={handleIdChange}
-            autocomlete='username'
           />
           <FormTitle> 비밀번호 </FormTitle>
           <StyledInput
@@ -75,7 +75,6 @@ const SignInUpForm = () => {
             type='password'
             value={password}
             onChange={handlePasswordChange}
-            autocomplete='current-password'
           />
           {isLogedIn ? (
             <>

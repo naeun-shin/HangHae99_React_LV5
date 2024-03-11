@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { __addTodoList } from '../../redux/modules/todoSlice';
 import {
@@ -8,9 +8,12 @@ import {
   ContentTextarea,
 } from '../../styles/todoStyles';
 import { Wrapper } from '../../styles/commonStyles';
-import Button from '../../components/button/Button';
-import StyledInput from '../../components/inputs/Input.module';
+import Button from '../button/Button';
+import StyledInput from '../inputs/Input.module';
 import { useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
+import { jwtDecode } from 'jwt-decode';
+import withAuth from '../../hoc/withAuth';
 
 const TodoAdd = () => {
   const dispatch = useDispatch();
@@ -20,6 +23,18 @@ const TodoAdd = () => {
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [disabled, setDisabled] = useState(false);
+  // const [isInputDisabled, setIsInputDisabled] = useState(false);
+
+  const [cookies] = useCookies(['accessToken']);
+  const cookie = cookies.accessToken;
+
+  useEffect(() => {
+    if (cookie !== undefined) {
+      const decodedToken = jwtDecode(cookie);
+      const { id } = decodedToken;
+      setName(id);
+    }
+  }, [cookie]);
 
   const handleTodoListAdd = () => {
     if (title !== '' && content !== '' && name !== '') {
@@ -56,6 +71,7 @@ const TodoAdd = () => {
             <StyledInput
               value={name}
               onChange={(e) => setName(e.target.value)}
+              disabled
             />
           </AddListWriter>
           <AddListTitle>
@@ -70,12 +86,7 @@ const TodoAdd = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <Button
-            onClick={handleTodoListAdd}
-            text='추가하기'
-            buttontype='add'
-            disabled
-          />
+          <Button onClick={handleTodoListAdd} text='추가하기' disabled />
         </AddListBox>
       </Wrapper>
     </>

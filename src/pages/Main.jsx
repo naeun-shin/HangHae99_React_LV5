@@ -4,6 +4,7 @@ import Button from '../components/button/Button';
 import { MainSection, Wrapper } from '../styles/commonStyles';
 import { useDispatch } from 'react-redux';
 import { __getAuthToken } from '../redux/modules/authSlice';
+import withAuth from '../hoc/withAuth';
 
 const Main = () => {
   const navigate = useNavigate();
@@ -35,4 +36,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default withAuth(Main, true);
