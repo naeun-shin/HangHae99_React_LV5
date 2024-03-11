@@ -9,7 +9,6 @@ import {
   StyledLink,
   WorkingHeader,
 } from '../../styles/todoStyles';
-import withAuth from '../../hoc/withAuth';
 
 const TodoContent = ({ todo }) => {
   const dispatch = useDispatch();

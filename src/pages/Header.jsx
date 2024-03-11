@@ -46,21 +46,21 @@ const Header = () => {
               <Button
                 onClick={handleTodoListClick}
                 text={'My Todo List'}
-                bgColor='lightBlue'
-                borderColor='lightBlue'
+                bgcolor='lightBlue'
+                bordercolor='lightBlue'
               />
               <Button
                 onClick={handleTodolistAddClick}
                 text={'TodoList 추가하기'}
-                bgColor='lightBlue'
-                borderColor='lightBlue'
+                bgcolor='lightBlue'
+                bordercolor='lightBlue'
               />
             </>
           ) : (
             <Button
               text={'My Todo List'}
-              bgColor='lightBlue'
-              borderColor='lightBlue'
+              bgcolor='lightBlue'
+              bordercolor='lightBlue'
             />
           )}
         </p>
@@ -71,8 +71,8 @@ const Header = () => {
             <Button
               onClick={handleLogoutClick}
               text={'로그아웃'}
-              bgColor='lightYellow'
-              borderColor='darkYellow'
+              bgcolor='lightYellow'
+              bordercolor='darkYellow'
             />
           </>
         ) : null}

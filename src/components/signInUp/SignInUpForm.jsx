@@ -82,15 +82,15 @@ const SignInUpForm = () => {
               <Button
                 onClick={handleSignUpOrInclick}
                 text={'로그인'}
-                bgColor='blue'
-                borderColor='darkBlue'
+                bgcolor='blue'
+                bordercolor='darkBlue'
               />
               <br />
               <Button
                 onClick={handleChangeSignState}
                 text={'회원가입하러가기'}
-                bgColor='blue'
-                borderColor='darkBlue'
+                bgcolor='blue'
+                bordercolor='darkBlue'
               />
             </ButtonBox>
           ) : (
@@ -98,15 +98,15 @@ const SignInUpForm = () => {
               <Button
                 onClick={handleSignUpOrInclick}
                 text={'회원가입'}
-                bgColor='blue'
-                borderColor='darkBlue'
+                bgcolor='blue'
+                bordercolor='darkBlue'
               />
               <br />
               <Button
                 onClick={handleChangeSignState}
                 text={'로그인하러가기'}
-                bgColor='blue'
-                borderColor='darkBlue'
+                bgcolor='blue'
+                bordercolor='darkBlue'
               />
             </ButtonBox>
           )}

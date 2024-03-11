@@ -63,8 +63,8 @@ const TodoDetail = () => {
           <Button
             onClick={handleGoBackclick}
             text='이전으로'
-            bgColor='lightYellow'
-            borderColor='darkYellow'
+            bgcolor='lightYellow'
+            bordercolor='darkYellow'
           />
         </DetailHeader>
         <DetailTitle>{details.title}</DetailTitle>
@@ -82,14 +82,14 @@ const TodoDetail = () => {
             <Button
               onClick={handleTodoUpdate}
               text='저장하기'
-              bgColor='blue'
-              borderColor='darkBlue'
+              bgcolor='blue'
+              bordercolor='darkBlue'
             />
             <Button
               onClick={handleUpdateCancelClick}
               text='취소하기'
-              bgColor='blue'
-              borderColor='darkBlue'
+              bgcolor='blue'
+              bordercolor='darkBlue'
             />
           </ButtonBox>
         ) : (
@@ -97,8 +97,8 @@ const TodoDetail = () => {
             <Button
               onClick={handleUpdateModeClick}
               text='수정하기'
-              bgColor='blue'
-              borderColor='darkBlue'
+              bgcolor='blue'
+              bordercolor='darkBlue'
             />
           </ButtonBox>
         )}

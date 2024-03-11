@@ -29,8 +29,8 @@ export const __addTodoList = createAsyncThunk(
 
 export const __removeTodo = createAsyncThunk('todos/removeTodo', async (id) => {
   try {
-    const response = await todoInstance.delete(`/todos/${id}`);
-    return response.data;
+    await todoInstance.delete(`/todos/${id}`);
+    return id;
   } catch (error) {
     throw Error('Failed to fetch data from the server.');
   }
@@ -104,9 +104,7 @@ export const todoSlice = createSlice({
       })
       .addCase(__removeTodo.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.todos = state.todos.filter(
-          (todo) => todo.id !== action.payload.id
-        );
+        state.todos = state.todos.filter((todo) => todo.id !== action.payload);
       })
       .addCase(__removeTodo.rejected, (state, action) => {
         state.status = 'failed';

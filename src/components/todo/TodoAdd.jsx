@@ -87,8 +87,8 @@ const TodoAdd = () => {
           <Button
             onClick={handleTodoListAdd}
             text='추가하기'
-            bgColor='lightYellow'
-            borderColor='darkYellow'
+            bgcolor='lightYellow'
+            bordercolor='darkYellow'
             disabled
           />
         </AddListBox>
