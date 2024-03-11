@@ -1,5 +1,3 @@
-// import { Cookies } from 'react-cookie';
-// import instance from './api';
 import axios from 'axios';
 
 export const authInstance = axios.create({

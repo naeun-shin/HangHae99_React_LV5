@@ -13,7 +13,6 @@ import StyledInput from '../inputs/Input.module';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import { jwtDecode } from 'jwt-decode';
-import withAuth from '../../hoc/withAuth';
 
 const TodoAdd = () => {
   const dispatch = useDispatch();
@@ -23,7 +22,6 @@ const TodoAdd = () => {
   const [content, setContent] = useState('');
   const [name, setName] = useState('');
   const [disabled, setDisabled] = useState(false);
-  // const [isInputDisabled, setIsInputDisabled] = useState(false);
 
   const [cookies] = useCookies(['accessToken']);
   const cookie = cookies.accessToken;
@@ -86,7 +84,13 @@ const TodoAdd = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <Button onClick={handleTodoListAdd} text='추가하기' disabled />
+          <Button
+            onClick={handleTodoListAdd}
+            text='추가하기'
+            bgColor='lightYellow'
+            borderColor='darkYellow'
+            disabled
+          />
         </AddListBox>
       </Wrapper>
     </>

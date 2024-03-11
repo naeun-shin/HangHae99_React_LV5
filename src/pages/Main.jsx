@@ -25,10 +25,17 @@ const Main = () => {
     <>
       <Wrapper>
         <MainSection>
-          <Button onClick={handleTodolistAddClick} text={'TodoList 추가하기'} />
+          <Button
+            onClick={handleTodolistAddClick}
+            text={'TodoList 추가하기'}
+            bgColor='lightYellow'
+            borderColor='darkYellow'
+          />
           <Button
             onClick={handleTodolistReadClick}
             text={'TodoList 목록보기'}
+            bgColor='lightYellow'
+            borderColor='darkYellow'
           />
         </MainSection>
       </Wrapper>

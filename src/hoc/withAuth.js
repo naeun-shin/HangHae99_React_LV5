@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { getCookie } from '../utils/CookieUtil';
 import { useCookies } from 'react-cookie';
 
 const withAuth = (SpecialComponent, option) => {
@@ -8,7 +7,6 @@ const withAuth = (SpecialComponent, option) => {
     const navigate = useNavigate();
     const [cookies] = useCookies(['accessToken']);
     const isLogedIn = cookies.accessToken;
-    console.log(isLogedIn);
     useEffect(() => {
       if (!isLogedIn && option) {
         alert('로그인이 필요합니다.');

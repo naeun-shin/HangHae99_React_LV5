@@ -1,5 +1,4 @@
 const color = {
-  darkGreen: '#017574',
   red: 'red',
   white: 'white',
   black: 'black',
@@ -10,9 +9,15 @@ const color = {
   lightBlue: '#E3F4F4',
   darkBlue: '#93BFCF',
   blue: '#92C7CF',
+  skyBlue: '#40A2E3',
   brown: '#AD8B73',
   lightBrwon: '#CEAB93',
   beige: '#E3CAA5',
+  darkYellow: '#E8C872',
+  lightYellow: '#FFF3CF',
+  lightGreen: '#9AD0C2',
+  darkGreen: '#2D9596',
+  transparent: 'transparent',
 };
 
 const theme = {

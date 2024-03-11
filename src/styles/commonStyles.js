@@ -23,11 +23,11 @@ const Wrapper = styled.div`
 const MainSection = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: ${(props) => props.theme.color.lightBlue};
-  border-radius: 5px;
   padding: 20px;
   margin-top: 100px;
-  border: 2px solid;
+  border: 2px solid ${(props) => props.theme.color.darkBlue};
+  border-radius: 5px;
+  background-color: ${(props) => props.theme.color.lightBlue};
 `;
 const FormSection = styled.form`
   width: 400px;
@@ -36,7 +36,7 @@ const FormSection = styled.form`
   flex-direction: column;
   background-color: ${(props) => props.theme.color.lightBeige};
   border-radius: 5px;
-  gap: 25px;
+  gap: 10px;
   padding: 20px;
   margin-top: 100px;
 `;

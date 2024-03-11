@@ -38,8 +38,13 @@ const WorkingComponentSytle = styled.div`
   flex-grow: 0;
   background-color: ${(props) => props.theme.color.lightBlue};
 `;
-
+const WorkingHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
 const StyledLink = styled(Link)`
+  margin-left: auto;
   display: grid;
   color: black;
   text-decoration-line: none;
@@ -100,12 +105,14 @@ const DetailContentSection = styled.div`
 `;
 
 const ContentTextarea = styled.textarea`
-  border: 1px solid black;
+  border: 1px solid ${(props) => props.theme.color.blue};
+  /* border: 1px solid black; */
   width: 450px;
   height: 150px;
   resize: none;
   font-weight: bold;
   padding: 10px;
+  border-radius: 5px;
 `;
 
 export {
@@ -115,6 +122,7 @@ export {
   WorkingStyle,
   WorkingListStyle,
   WorkingComponentSytle,
+  WorkingHeader,
   StyledLink,
   DetailBox,
   Detail,

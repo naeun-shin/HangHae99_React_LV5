@@ -10,16 +10,17 @@ const StyledButton = styled.button`
   font-size: 14px;
   font-weight: bold;
 
-  background-color: ${(props) => props.theme.color.lightBlue};
   border-radius: 5px;
-  border: 2px solid ${(props) => props.theme.color.blue};
+
+  border: 2px solid ${({ theme, borderColor }) => theme.color[borderColor]};
+  background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
 `;
 
 const ButtonBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
 `;
 
 export { StyledButton, ButtonBox };

@@ -4,7 +4,11 @@ import { useDispatch } from 'react-redux';
 import { __isDoneTodo, __removeTodo } from '../../redux/modules/todoSlice';
 import ButtonFunction from '../button/ButtonFunction';
 
-import { WorkingComponentSytle, StyledLink } from '../../styles/todoStyles';
+import {
+  WorkingComponentSytle,
+  StyledLink,
+  WorkingHeader,
+} from '../../styles/todoStyles';
 import withAuth from '../../hoc/withAuth';
 
 const TodoContent = ({ todo }) => {
@@ -28,7 +32,10 @@ const TodoContent = ({ todo }) => {
   return (
     <>
       <WorkingComponentSytle>
-        <StyledLink to={`/todoDetail/${todo.id}`}>상세보기</StyledLink>
+        <WorkingHeader>
+          <p>작성자 : {todo.name}</p>
+          <StyledLink to={`/todoDetail/${todo.id}`}>상세보기</StyledLink>
+        </WorkingHeader>
         <h3>{todo.title}</h3>
         <p>{todo.content}</p>
         <ButtonFunction

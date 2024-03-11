@@ -29,7 +29,6 @@ export const __login = createAsyncThunk('auth/login', async (userInfo) => {
     const expiresIn = expireTime - currentTime;
     // 쿠키에 토큰 저장
     setCookie('accessToken', token, expiresIn);
-    // setCookie(token, )
     return data;
   } catch (error) {
     alert(error.response.data.message);
@@ -41,7 +40,6 @@ export const __getAuthToken = createAsyncThunk(
   async () => {
     try {
       const cookie = getCookie('accessToken');
-      console.log(cookie);
       const response = await authInstance.get('/user', {
         headers: {
           Authorization: `Bearer ${cookie}`,

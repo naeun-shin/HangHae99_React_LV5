@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyledButton } from './Button.module';
 
-const Button = ({ onClick, text, color, size, border }) => {
+const Button = ({ onClick, text, bgColor, borderColor }) => {
   return (
     <StyledButton
       onClick={onClick}
       text={text}
-      $color={color}
-      $size={size}
-      $border={border}
+      bgColor={bgColor}
+      borderColor={borderColor}
     >
       {text}
     </StyledButton>

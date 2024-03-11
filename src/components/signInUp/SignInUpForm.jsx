@@ -13,6 +13,7 @@ import { __login, __registerUser } from '../../redux/modules/authSlice';
 import Button from '../../components/button/Button';
 import StyledInput from '../../components/inputs/Input.module';
 import withAuth from '../../pages/TodoMain';
+import { ButtonBox } from '../button/Button.module';
 
 const SignInUpForm = () => {
   const navigate = useNavigate();
@@ -77,20 +78,37 @@ const SignInUpForm = () => {
             onChange={handlePasswordChange}
           />
           {isLogedIn ? (
-            <>
-              <Button onClick={handleSignUpOrInclick} text={'로그인'} />
+            <ButtonBox>
+              <Button
+                onClick={handleSignUpOrInclick}
+                text={'로그인'}
+                bgColor='blue'
+                borderColor='darkBlue'
+              />
               <br />
               <Button
                 onClick={handleChangeSignState}
                 text={'회원가입하러가기'}
+                bgColor='blue'
+                borderColor='darkBlue'
               />
-            </>
+            </ButtonBox>
           ) : (
-            <>
-              <Button onClick={handleSignUpOrInclick} text={'회원가입'} />
+            <ButtonBox>
+              <Button
+                onClick={handleSignUpOrInclick}
+                text={'회원가입'}
+                bgColor='blue'
+                borderColor='darkBlue'
+              />
               <br />
-              <Button onClick={handleChangeSignState} text={'로그인하러가기'} />
-            </>
+              <Button
+                onClick={handleChangeSignState}
+                text={'로그인하러가기'}
+                bgColor='blue'
+                borderColor='darkBlue'
+              />
+            </ButtonBox>
           )}
         </FormSection>
       </Wrapper>

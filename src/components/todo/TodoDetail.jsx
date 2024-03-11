@@ -11,8 +11,10 @@ import {
   DetailContent,
   ContentTextarea,
   DetailContentSection,
+  AddListWriter,
 } from '../../styles/todoStyles';
 import withAuth from '../../hoc/withAuth';
+import { ButtonBox } from '../button/Button.module';
 
 const TodoDetail = () => {
   const params = useParams();
@@ -57,11 +59,12 @@ const TodoDetail = () => {
     <DetailBox>
       <Detail>
         <DetailHeader>
-          <p> 작성자 : {details.name}</p>
+          <AddListWriter> 작성자 : {details.name}</AddListWriter>
           <Button
             onClick={handleGoBackclick}
             text='이전으로'
-            buttontype='goBack'
+            bgColor='lightYellow'
+            borderColor='darkYellow'
           />
         </DetailHeader>
         <DetailTitle>{details.title}</DetailTitle>
@@ -75,26 +78,29 @@ const TodoDetail = () => {
           )}
         </DetailContentSection>
         {isEditMode ? (
-          <>
+          <ButtonBox>
             <Button
               onClick={handleTodoUpdate}
               text='저장하기'
-              buttontype='remove'
+              bgColor='blue'
+              borderColor='darkBlue'
             />
             <Button
               onClick={handleUpdateCancelClick}
               text='취소하기'
-              buttontype='cancel'
+              bgColor='blue'
+              borderColor='darkBlue'
             />
-          </>
+          </ButtonBox>
         ) : (
-          <>
+          <ButtonBox>
             <Button
               onClick={handleUpdateModeClick}
               text='수정하기'
-              buttontype='update'
+              bgColor='blue'
+              borderColor='darkBlue'
             />
-          </>
+          </ButtonBox>
         )}
       </Detail>
     </DetailBox>

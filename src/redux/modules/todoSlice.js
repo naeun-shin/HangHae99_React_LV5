@@ -119,7 +119,6 @@ export const todoSlice = createSlice({
       .addCase(__isDoneTodo.fulfilled, (state, action) => {
         state.status = 'succeeded';
         const { id, isDone } = action.payload;
-        console.log(action.payload);
         state.todos = state.todos.map((todo) =>
           todo.id === id ? { ...todo, isDone } : todo
         );
