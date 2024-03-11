@@ -15,14 +15,14 @@ const ButtonFunction = ({
         <Button
           onClick={() => handleListRemoveClick(itemId)}
           text='삭제하기'
-          bgColor='lightYellow'
-          borderColor='darkYellow'
+          bgcolor='lightYellow'
+          bordercolor='darkYellow'
         />
         <Button
           onClick={() => handleListMoveDoneClick(itemId)}
           text='완료'
-          bgColor='lightGreen'
-          borderColor='darkGreen'
+          bgcolor='lightGreen'
+          bordercolor='darkGreen'
         />
       </ButtonBox>
     );
@@ -32,14 +32,14 @@ const ButtonFunction = ({
         <Button
           onClick={() => handleListRemoveClick(itemId)}
           text='삭제하기'
-          bgColor='lightYellow'
-          borderColor='darkYellow'
+          bgcolor='lightYellow'
+          bordercolor='darkYellow'
         />
         <Button
           onClick={() => handleDoneListCancelClick(itemId)}
           text='취소'
-          bgColor='lightGreen'
-          borderColor='darkGreen'
+          bgcolor='lightGreen'
+          bordercolor='darkGreen'
         />
       </ButtonBox>
     );

@@ -12,8 +12,8 @@ const StyledButton = styled.button`
 
   border-radius: 5px;
 
-  border: 2px solid ${({ theme, borderColor }) => theme.color[borderColor]};
-  background-color: ${({ theme, bgColor }) => theme.color[bgColor]};
+  border: 2px solid ${({ theme, bordercolor }) => theme.color[bordercolor]};
+  background-color: ${({ theme, bgcolor }) => theme.color[bgcolor]};
 `;
 
 const ButtonBox = styled.div`
